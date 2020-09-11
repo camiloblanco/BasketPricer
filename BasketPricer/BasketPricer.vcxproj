@@ -142,6 +142,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="BasketPortfolio.cpp" />
     <ClCompile Include="EurBasketCall.cpp" />
     <ClCompile Include="EurBasketPut.cpp" />
     <ClCompile Include="BasketOptionBS.cpp" />
@@ -149,6 +150,7 @@
     <ClCompile Include="MarketBS.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BasketPortfolio.h" />
     <ClInclude Include="EurBasketCall.h" />
     <ClInclude Include="EurBasketPut.h" />
     <ClInclude Include="BasketOptionBS.h" />

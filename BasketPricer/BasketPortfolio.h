@@ -1,3 +1,6 @@
+/****************************************************************************************
+*								#INCLUDES AND #CONSTANTS								*
+****************************************************************************************/
 #pragma once
 #include <iostream>
 #include <string>
@@ -8,24 +11,27 @@
 #include <vector> 
 #include <chrono>
 
-#include "EurOptionBS.h"
-#include "EurCallBS.h"
-#include "EurPutBS.h"
+#include "BasketOptionBS.h"
+#include "EurBasketCall.h"
+#include "EurBasketPut.h"
 #include "MarketBS.h"
 
 using namespace std;
 using namespace std::chrono;
 
-class EurPortfolio
+/****************************************************************************************
+*									CLASS DECLARATION									*
+****************************************************************************************/
+
+class BasketPortfolio
 {
 public:
-	EurPortfolio();
+	BasketPortfolio();
 	void loadPortfolio(string fileName);
 	void pricePortfolio(string fileName);
-	~EurPortfolio();
+	~BasketPortfolio();
 private:
-	vector<EurCallBS> m_callOptsVec;
-	vector<EurPutBS> m_putOptsVec;
+	vector<BasketOptionBS*> m_basketOptionsPtrVec;
 	vector<MarketBS> m_marketsVec;
 };
 

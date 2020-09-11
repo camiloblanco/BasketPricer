@@ -30,6 +30,9 @@
     <ClCompile Include="EurBasketPut.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="BasketPortfolio.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BasketOptionBS.h">
@@ -42,6 +45,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="EurBasketPut.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BasketPortfolio.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
