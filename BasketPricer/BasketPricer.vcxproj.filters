@@ -15,12 +15,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="BasketEurCall.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="BasketEurPut.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="BasketOptionBS.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -30,18 +24,24 @@
     <ClCompile Include="BasketPricer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="EurBasketCall.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="EurBasketPut.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="BasketEurCall.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="BasketEurPut.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="BasketOptionBS.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="MarketBS.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="EurBasketCall.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="EurBasketPut.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

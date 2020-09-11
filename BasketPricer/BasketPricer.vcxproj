@@ -142,15 +142,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="BasketEurCall.cpp" />
-    <ClCompile Include="BasketEurPut.cpp" />
+    <ClCompile Include="EurBasketCall.cpp" />
+    <ClCompile Include="EurBasketPut.cpp" />
     <ClCompile Include="BasketOptionBS.cpp" />
     <ClCompile Include="BasketPricer.cpp" />
     <ClCompile Include="MarketBS.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="BasketEurCall.h" />
-    <ClInclude Include="BasketEurPut.h" />
+    <ClInclude Include="EurBasketCall.h" />
+    <ClInclude Include="EurBasketPut.h" />
     <ClInclude Include="BasketOptionBS.h" />
     <ClInclude Include="MarketBS.h" />
   </ItemGroup>

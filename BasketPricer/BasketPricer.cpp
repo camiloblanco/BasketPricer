@@ -1,12 +1,13 @@
 /****************************************************************************************
-* Project		:	Machine Learning and modern numerical techniques for high-dimensional
-*					option pricing - Financial Computing MSc. Dissertation QMUL 2019/2020
-* License		:	MIT License, https://opensource.org/licenses/MIT
+* Project		 :	Machine Learning and modern numerical techniques for
+*                 high-dimensional option pricing
+*                 Financial Computing MSc. Dissertation QMUL 2019/2020
+* License		 :	MIT License, https://opensource.org/licenses/MIT
 * Copyright (c) :	2020 Camilo Blanco
-* Mail - Web	:	mail@camiloblanco.com - www.camiloblanco.com
-* Lenguaje / Env:	C++ / Microsoft Visual Studio Community 2019
-* Git Control	:	
-* Description	:	main CPP file for the numerical pricing algorithms
+* Mail - Web	 :	mail@camiloblanco.com - www.camiloblanco.com
+* Lenguaje/Env	 :	C++ / Microsoft Visual Studio Community 2019
+* Git Control	 :	https://github.com/camiloblanco/BasketPricer
+* Description	 :	C++ engine to price European basket options using Montecarlo and EFD
 *
 ****************************************************************************************/
 
@@ -17,8 +18,8 @@
 #include <iomanip>
 #include <Eigen/Dense>
 #include "MarketBS.h"
-#include "BasketEurCall.h"
-#include "BasketEurPut.h"
+#include "EurBasketCall.h"
+#include "EurBasketPut.h"
 
 using namespace std;
 using namespace Eigen;
@@ -112,8 +113,8 @@ void EuropeanMC() {
 
 		// Declare a BasketOptionBS pointer vector and objects for the Call and Put options
 		vector<BasketOptionBS*> optionsPTRvec;
-		BasketOptionBS* eurCallPTR = new BasketEurCall(T, K);
-		BasketOptionBS* eurPutPRT = new BasketEurPut(T, K);
+		BasketOptionBS* eurCallPTR = new EurBasketCall(T, K);
+		BasketOptionBS* eurPutPRT = new EurBasketPut(T, K);
 		optionsPTRvec.push_back(eurCallPTR);
 		optionsPTRvec.push_back(eurPutPRT);
 	
@@ -167,8 +168,8 @@ void EuropeanEFD() {
 
 		// Declare a BasketOptionBS pointer vector and objects for the Call and Put options
 		vector<BasketOptionBS*> optionsPTRvec;
-		BasketOptionBS* eurCallPTR = new BasketEurCall(T, K);
-		BasketOptionBS* eurPutPRT = new BasketEurPut(T, K);
+		BasketOptionBS* eurCallPTR = new EurBasketCall(T, K);
+		BasketOptionBS* eurPutPRT = new EurBasketPut(T, K);
 		optionsPTRvec.push_back(eurCallPTR);
 		optionsPTRvec.push_back(eurPutPRT);
 

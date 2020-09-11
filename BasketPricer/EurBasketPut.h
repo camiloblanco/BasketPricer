@@ -8,13 +8,13 @@
 *									CLASS DECLARATION									*
 ****************************************************************************************/
 
-class BasketEurPut :	public BasketOptionBS
+class EurBasketPut :	public BasketOptionBS
 {
 public:
 
     //constructors
-    BasketEurPut();
-    BasketEurPut(double T, double K);
+    EurBasketPut();
+    EurBasketPut(double T, double K);
 
     // Public Member functions
     double payOff(vector <double> stockPrices);

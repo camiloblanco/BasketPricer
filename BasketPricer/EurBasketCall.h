@@ -8,13 +8,13 @@
 *									CLASS DECLARATION									*
 ****************************************************************************************/
 
-class BasketEurCall :	public BasketOptionBS
+class EurBasketCall :	public BasketOptionBS
 {
 public:
 
     //constructors
-    BasketEurCall();
-    BasketEurCall(double T, double K);
+    EurBasketCall();
+    EurBasketCall(double T, double K);
 
     // Public Member functions
     double payOff(vector <double> stockPrices);
