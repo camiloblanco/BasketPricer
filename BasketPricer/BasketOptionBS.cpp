@@ -17,6 +17,8 @@ void BasketOptionBS::setT(double T) { m_T = T; }
 void BasketOptionBS::setK(double K) { m_K = K; }
 double BasketOptionBS::getT() { return m_T; }
 double BasketOptionBS::getK() { return m_K; }
+int BasketOptionBS::getCall() { return m_type.compare("call") == 0 ? 1 : 0; }
+int BasketOptionBS :: getPut(){ return m_type.compare("put") == 0 ? 1 : 0; }
 string BasketOptionBS::getType() { return m_type; }
 
 

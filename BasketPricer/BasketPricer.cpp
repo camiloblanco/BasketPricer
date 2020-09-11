@@ -118,7 +118,7 @@ void PriceEuropeanBasketByMC() {
 		optionsPTRvec.push_back(eurCallPTR);
 		optionsPTRvec.push_back(eurPutPRT);
 	
-		// Vairable declaration
+		// Variable declaration
 		double price, error;
 
 		//Loop over the BasketOptionBS pointer vector
@@ -204,10 +204,15 @@ void PriceEuropeanBasketPortfolio() {
 
 	 cout << "****************************************************************************" << endl;
 	 cout << " Price an European basket portfolio on the Black-Scholes framework" << endl << endl;
-	 cout << " Please enter the time to maturity in years (T): " << endl;
-	 BasketPortfolio portfolio;
-	 portfolio.loadPortfolio("dataTest1BS1U_call.csv");
-	 portfolio.pricePortfolio("resultsMcTest1BS1U_call.csv");
+	 BasketPortfolio portfolio1;
+	 portfolio1.loadPortfolio("data1U.csv");
+	 portfolio1.pricePortfolio("prices1U.csv");
+	 BasketPortfolio portfolio2;
+	 portfolio2.loadPortfolio("data2U.csv");
+	 portfolio2.pricePortfolio("prices2U.csv");
+	 BasketPortfolio portfolio3;
+	 portfolio3.loadPortfolio("data3U.csv");
+	 portfolio3.pricePortfolio("prices3U.csv");
 	 menuPause();
 }
 

@@ -33,5 +33,7 @@ public:
 private:
 	vector<BasketOptionBS*> m_basketOptionsPtrVec;
 	vector<MarketBS> m_marketsVec;
+	vector<string> m_header;
+	int m_nu;
 };
 
