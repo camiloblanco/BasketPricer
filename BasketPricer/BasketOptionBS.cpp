@@ -17,6 +17,8 @@ void BasketOptionBS::setT(double T) { m_T = T; }
 void BasketOptionBS::setK(double K) { m_K = K; }
 double BasketOptionBS::getT() { return m_T; }
 double BasketOptionBS::getK() { return m_K; }
+int BasketOptionBS::getCall() { return m_type.compare("call") == 0 ? 1 : 0; }
+int BasketOptionBS :: getPut(){ return m_type.compare("put") == 0 ? 1 : 0; }
 string BasketOptionBS::getType() { return m_type; }
 
 
@@ -89,7 +91,6 @@ double  BasketOptionBS::priceByEFD(MarketBS market, int timeSteps, int sSteps, d
     deltaPrice = (sMax - sMin) / sSteps;
 
     if (market.get_n() == 1) {
-        std::cout << "Pricing by EFD with 1 Asset . . ." << endl;
 
         // Declare matrix for the lattice and a vector for the stock prices
         vector<vector<double>> Lattice2D(sSteps + 1, vector<double>(timeSteps + 1, 0));
@@ -161,7 +162,6 @@ double  BasketOptionBS::priceByEFD(MarketBS market, int timeSteps, int sSteps, d
                 Lattice3D[k][j][timeSteps] = pay;
             }
         }
-
 
         for (int s = 0; s < sSteps; s++) {
             for (int i = 0; i < timeSteps; i++) {

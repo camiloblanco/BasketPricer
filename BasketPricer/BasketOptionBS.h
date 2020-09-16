@@ -30,6 +30,8 @@ public:
     void setK(double K);
     double getT();
     double getK();
+    int getCall();
+    int getPut();
     string getType();
 
     // Public Member functions

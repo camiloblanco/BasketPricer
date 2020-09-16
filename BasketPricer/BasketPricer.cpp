@@ -118,7 +118,7 @@ void PriceEuropeanBasketByMC() {
 		optionsPTRvec.push_back(eurCallPTR);
 		optionsPTRvec.push_back(eurPutPRT);
 	
-		// Vairable declaration
+		// Variable declaration
 		double price, error;
 
 		//Loop over the BasketOptionBS pointer vector
@@ -198,18 +198,41 @@ void PriceEuropeanBasketByEFD() {
 	menuPause();
 }
 
-// Function to price an European basket portfolio.
-void PriceEuropeanBasketPortfolio() {
+// Function to price an European basket portfolio ByMC.
+void PriceEuropeanBasketPortfolioByMC() {
+	clearConsole();
+
+	cout << "****************************************************************************" << endl;
+	cout << " Price an European basket portfolio on the Black-Scholes framework" << endl << endl;
+	int N;
+
+	cout << endl << "Enter the number of montecarlo simulations:" << endl;
+	cin >> N;
+	BasketPortfolio portfolio;
+	portfolio.loadPortfolio("data.csv");
+	portfolio.pricePortfolioByMC("prices.csv", N);
+	menuPause();
+}
+
+// Function to price an European basket portfolio ByEFD
+void PriceEuropeanBasketPortfolioByEFD() {
 	 clearConsole();
 
 	 cout << "****************************************************************************" << endl;
 	 cout << " Price an European basket portfolio on the Black-Scholes framework" << endl << endl;
-	 cout << " Please enter the time to maturity in years (T): " << endl;
+	 double timeSteps = 100, sSteps = 10;
+	 
+	 cout << " Please enter the number of time steps : " << endl;
+	 cin >> timeSteps;
+	 cout << " Please enter the number of spot steps : " << endl;
+	 cin >> sSteps;
 	 BasketPortfolio portfolio;
-	 portfolio.loadPortfolio("dataTest1BS1U_call.csv");
-	 portfolio.pricePortfolio("resultsMcTest1BS1U_call.csv");
+	 portfolio.loadPortfolio("data.csv");
+	 portfolio.pricePortfolioByEFD("prices.csv", timeSteps, sSteps);
 	 menuPause();
-}
+} 
+
+
 
 
 /****************************************************************************************
@@ -227,7 +250,8 @@ int main()
 		cout << " Select an option by entering the given number:" << endl << endl;
 		cout << " 1. Price a European basket option using Montecarlo with n underlyings" << endl;
 		cout << " 2. Price a European basket option using EFD with one or two underlyings" << endl;
-		cout << " 3. Price a portfolio of European basket options from a CSV file" << endl;
+		cout << " 3. Price a portfolio of European basket options by Monte Carlo" << endl;
+		cout << " 4. Price a portfolio of European basket options by EFD" << endl;
 		cout << " 0. To exit the program" << endl;
 		cout << "****************************************************************************" << endl;
 		cout << endl << "Please enter the option number:" << endl;
@@ -239,7 +263,10 @@ int main()
 			 PriceEuropeanBasketByEFD();
 		}
 		else if (option == 3) {
-			 PriceEuropeanBasketPortfolio();
+			 PriceEuropeanBasketPortfolioByMC();
+		}
+		else if (option == 4) {
+			PriceEuropeanBasketPortfolioByEFD();
 		}
 		else if (option == 0) {
 			cout << endl << "Thank you for using this program, have a nice day. " << endl << endl;

@@ -25,12 +25,12 @@ public:
     MarketBS(int n, vector<double> S0, vector<double> sigma, double r, MatrixXd CorM);
 
     //accessors
-    vector<double> get_S0();
-    vector<double> get_sigma();
-    double get_sigma(int n);
-    double get_S0(int n);
     double get_r();
     double get_n();
+    vector<double> get_S0();
+    double get_S0(int n);
+    vector<double> get_sigma();
+    double get_sigma(int n);
     double get_cor(int n, int m);
 
 

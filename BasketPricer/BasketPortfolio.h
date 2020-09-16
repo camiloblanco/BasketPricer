@@ -28,10 +28,13 @@ class BasketPortfolio
 public:
 	BasketPortfolio();
 	void loadPortfolio(string fileName);
-	void pricePortfolio(string fileName);
+	void pricePortfolioByMC(string fileName, int N);
+	void pricePortfolioByEFD(string fileName, int timeSteps, int sSteps);
 	~BasketPortfolio();
 private:
 	vector<BasketOptionBS*> m_basketOptionsPtrVec;
 	vector<MarketBS> m_marketsVec;
+	vector<string> m_header;
+	int m_nu;
 };
 
