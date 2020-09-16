@@ -164,7 +164,6 @@ double  BasketOptionBS::priceByEFD(MarketBS market, int timeSteps, int sSteps, d
             }
         }
 
-
         for (int s = 0; s < sSteps; s++) {
             for (int i = 0; i < timeSteps; i++) {
 

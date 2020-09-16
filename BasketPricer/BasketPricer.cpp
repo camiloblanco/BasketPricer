@@ -199,22 +199,20 @@ void PriceEuropeanBasketByEFD() {
 }
 
 // Function to price an European basket portfolio.
-void PriceEuropeanBasketPortfolio() {
+void PriceEuropeanBasketPortfolioByMC() {
 	 clearConsole();
 
 	 cout << "****************************************************************************" << endl;
 	 cout << " Price an European basket portfolio on the Black-Scholes framework" << endl << endl;
-	 BasketPortfolio portfolio1;
-	 portfolio1.loadPortfolio("data1U.csv");
-	 portfolio1.pricePortfolio("prices1U.csv");
-	 BasketPortfolio portfolio2;
-	 portfolio2.loadPortfolio("data2U.csv");
-	 portfolio2.pricePortfolio("prices2U.csv");
-	 BasketPortfolio portfolio3;
-	 portfolio3.loadPortfolio("data3U.csv");
-	 portfolio3.pricePortfolio("prices3U.csv");
+	 int N;
+	 
+	 cout << endl << "Enter the number of montecarlo simulations:" << endl;
+	 cin >> N;
+	 BasketPortfolio portfolio;
+	 portfolio.loadPortfolio("data.csv");
+	 portfolio.pricePortfolioByMC("prices.csv", N);
 	 menuPause();
-}
+} 
 
 
 /****************************************************************************************
@@ -232,7 +230,7 @@ int main()
 		cout << " Select an option by entering the given number:" << endl << endl;
 		cout << " 1. Price a European basket option using Montecarlo with n underlyings" << endl;
 		cout << " 2. Price a European basket option using EFD with one or two underlyings" << endl;
-		cout << " 3. Price a portfolio of European basket options from a CSV file" << endl;
+		cout << " 3. Price a portfolio of European basket options by Monte Carlo from file" << endl;
 		cout << " 0. To exit the program" << endl;
 		cout << "****************************************************************************" << endl;
 		cout << endl << "Please enter the option number:" << endl;
@@ -244,7 +242,7 @@ int main()
 			 PriceEuropeanBasketByEFD();
 		}
 		else if (option == 3) {
-			 PriceEuropeanBasketPortfolio();
+			 PriceEuropeanBasketPortfolioByMC();
 		}
 		else if (option == 0) {
 			cout << endl << "Thank you for using this program, have a nice day. " << endl << endl;

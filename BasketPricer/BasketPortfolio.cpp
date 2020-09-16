@@ -117,7 +117,7 @@ void BasketPortfolio::loadPortfolio(string fileName) {
 		cout << "There was some problem opening the file: " << fileName << endl;
 	}
 }
-void BasketPortfolio::pricePortfolio(string fileName){
+void BasketPortfolio::pricePortfolioByMC(string fileName, int N){
 
 	cout << endl<<"Pricing the Dataset" << endl << endl;
 
@@ -130,25 +130,22 @@ void BasketPortfolio::pricePortfolio(string fileName){
 			fileStream << m_header[i] << ",";
 		}
 		fileStream << "mc_price" << "," << "mc_time_sec" << "," << "mc_std_err" << endl;
-
 		// Price the portafolio with a auto loop
 		int optCounter = 0;
 		for (auto& option : m_basketOptionsPtrVec) {
 			//Generate the dataset line with precision to 8 decimals
 			fileStream << option->getT() << "," << option->getK() << ","<<m_marketsVec[optCounter].get_r() << ",";
 
-			//Print stock prices
+			//Print to file stock prices
 			for (int i = 0; i < m_nu; i++) {
 				fileStream << m_marketsVec[optCounter].get_S0(i) << ",";
-				//cout << "get_S0(i): " << m_marketsVec[optCounter].get_S0(i) << endl;
 			}
-			//Print volatilities
+			//Print to file volatilities
 			for (int i = 0; i < m_nu; i++) {
 				fileStream << m_marketsVec[optCounter].get_sigma(i) << ",";
-				//cout << "get_sigma(i): " << m_marketsVec[optCounter].get_sigma(i) << endl;
 			}
 
-			// Print corelations
+			// Print to file corelations
 			if (m_nu > 1) {
 				for (int i = 0; i < m_nu - 1; i++) {
 					for (int j = i + 1; j <= m_nu - 1; j++) {
@@ -157,10 +154,8 @@ void BasketPortfolio::pricePortfolio(string fileName){
 				}
 			}
 
-			
 			// Vairable declaration
 			double mc_price, mc_std_err;
-			int N = 1000;
 			fileStream << fixed << setprecision(8);
 			// Get starting timepoint 
 			auto start = high_resolution_clock::now();
@@ -175,7 +170,6 @@ void BasketPortfolio::pricePortfolio(string fileName){
 		}
 	}
 	fileStream.close();
-
 	cout << "End of Pricing the Dataset" << endl << endl;
 
 }
