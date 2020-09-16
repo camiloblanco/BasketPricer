@@ -29,6 +29,7 @@ public:
 	BasketPortfolio();
 	void loadPortfolio(string fileName);
 	void pricePortfolioByMC(string fileName, int N);
+	void pricePortfolioByEFD(string fileName, int timeSteps, int sSteps);
 	~BasketPortfolio();
 private:
 	vector<BasketOptionBS*> m_basketOptionsPtrVec;

@@ -117,6 +117,7 @@ void BasketPortfolio::loadPortfolio(string fileName) {
 		cout << "There was some problem opening the file: " << fileName << endl;
 	}
 }
+
 void BasketPortfolio::pricePortfolioByMC(string fileName, int N){
 
 	cout << endl<<"Pricing the Dataset" << endl << endl;
@@ -171,7 +172,63 @@ void BasketPortfolio::pricePortfolioByMC(string fileName, int N){
 	}
 	fileStream.close();
 	cout << "End of Pricing the Dataset" << endl << endl;
+}
 
+
+void BasketPortfolio::pricePortfolioByEFD(string fileName, int timeSteps, int sSteps) {
+
+	cout << endl << "Pricing the Dataset" << endl << endl;
+
+	// Open fileName csv  file in new mode and save the header to clean the file
+	ofstream fileStream(fileName);
+
+	if (fileStream.is_open()) {
+		// write the file headers :
+		for (int i = 0; i < m_header.size() - 1; i++) {
+			fileStream << m_header[i] << ",";
+		}
+		fileStream << "efd_price" << "," << "efd_time_sec" << endl;
+		// Price the portafolio with a auto loop
+		int optCounter = 0;
+		for (auto& option : m_basketOptionsPtrVec) {
+			//Generate the dataset line with precision to 8 decimals
+			fileStream << option->getT() << "," << option->getK() << "," << m_marketsVec[optCounter].get_r() << ",";
+
+			//Print to file stock prices
+			for (int i = 0; i < m_nu; i++) {
+				fileStream << m_marketsVec[optCounter].get_S0(i) << ",";
+			}
+			//Print to file volatilities
+			for (int i = 0; i < m_nu; i++) {
+				fileStream << m_marketsVec[optCounter].get_sigma(i) << ",";
+			}
+
+			// Print to file corelations
+			if (m_nu > 1) {
+				for (int i = 0; i < m_nu - 1; i++) {
+					for (int j = i + 1; j <= m_nu - 1; j++) {
+						fileStream << m_marketsVec[optCounter].get_cor(i, j) << ",";
+					}
+				}
+			}
+
+			// Vairable declaration
+			double efd_price;
+			fileStream << fixed << setprecision(8);
+			// Get starting timepoint 
+			auto start = high_resolution_clock::now();
+			// Price the option 
+			option->priceByEFD(m_marketsVec[optCounter], timeSteps,sSteps, efd_price);
+			// Get ending timepoint 
+			auto stop = high_resolution_clock::now();
+			auto duration = duration_cast<nanoseconds>(stop - start);
+			double efd_time_sec = duration.count() / 1000000000.0;
+			fileStream << option->getCall() << "," << option->getPut() << "," << efd_price << "," << efd_time_sec << endl;
+			optCounter++;
+		}
+	}
+	fileStream.close();
+	cout << "End of Pricing the Dataset" << endl << endl;
 }
 
 BasketPortfolio::~BasketPortfolio()

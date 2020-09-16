@@ -91,7 +91,6 @@ double  BasketOptionBS::priceByEFD(MarketBS market, int timeSteps, int sSteps, d
     deltaPrice = (sMax - sMin) / sSteps;
 
     if (market.get_n() == 1) {
-        std::cout << "Pricing by EFD with 1 Asset . . ." << endl;
 
         // Declare matrix for the lattice and a vector for the stock prices
         vector<vector<double>> Lattice2D(sSteps + 1, vector<double>(timeSteps + 1, 0));
